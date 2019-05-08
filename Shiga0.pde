@@ -25,14 +25,14 @@ float start_y;
 float []goal_x = new float [3];
 
 void setup() {
-  size(640,800);
+  size(640,850);
   smooth();
 
   // Initialize box2d physics and create the world
   box2d = new Box2DProcessing(this);
   box2d.createWorld();
   // We are setting a custom gravity
-  box2d.setGravity(0, -20);
+  box2d.setGravity(0, -9.8); // 重力
 
   // Create ArrayLists	
   boxes = new ArrayList<Box>();
@@ -66,12 +66,23 @@ void draw() {
   box2d.step();
 
   // When the mouse is clicked, add a new Box object
-  if (random(1) < 0.1){
+  if (random(0.0, 2.0) < 0.1){
     int k = int(random(10000)); // 追加
     // Box p = new Box(random(width),10); 削除
     Box p = new Box(goal_x[k%3], start_y);
 
     boxes.add(p);
+  }
+  
+  stroke(255, 255, 255);
+  strokeWeight(2.0);
+  line(0, start_y, width, start_y);
+  line(0, goal_y, width, goal_y);
+  
+  for (int i = 0; i < 3; i++)
+  {
+    fill(175, 0, 255, 128);
+    rect(goal_x[i], goal_y, 48, 20);
   }
   
   if (mousePressed) {
