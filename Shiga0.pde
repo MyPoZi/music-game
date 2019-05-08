@@ -68,7 +68,9 @@ void draw() {
   // When the mouse is clicked, add a new Box object
   if (random(1) < 0.1){
     int k = int(random(10000)); // 追加
-    Box p = new Box(random(width),10);
+    // Box p = new Box(random(width),10); 削除
+    Box p = new Box(goal_x[k%3], start_y);
+
     boxes.add(p);
   }
   
