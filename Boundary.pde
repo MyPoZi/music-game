@@ -48,7 +48,7 @@ class Boundary {
     noStroke(); // 追加
     stroke(0);
     rectMode(CENTER);
-    rect(x,y,w,h);
+    rect(x,y,w * 0.6,h);
   }
 
 }
